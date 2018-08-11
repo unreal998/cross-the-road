@@ -1,20 +1,28 @@
 import "pixi.js";
 import grassIcon from "../imgs/textures/grass.jpg";
-import Dustcontainer from "./enemy";
-var container = new PIXI.Container();
+import dust from "../imgs/textures/dust.jpg"
+// import Dustcontainer from "./dust";
 
-var grass = PIXI.Texture.fromImage(grassIcon);
+const container = new PIXI.Container();
 
-// Create a 5x5 grid of bunnies
-for (var i = 0; i < 100; i++) {
-    var levelMap = new PIXI.Sprite(grass);
-    
-    levelMap.anchor.set(0.5);
-    levelMap.x = (i % 10) * 50;
-    levelMap.y = Math.floor(i / 10) * 50;
-    console.log(container.width)
-    console.log(container.height)
-    container.addChild(levelMap);
+const grass = PIXI.Texture.fromImage(grassIcon);
+const Dust = PIXI.Texture.fromImage(dust)
+
+for (var i = 0; i < 144; i++) {
+    const levelDust = new PIXI.Sprite(Dust);
+    levelDust.anchor.set(0.5);
+    levelDust.x = (i % 12) * 50;
+    levelDust.y = Math.floor(i / 12) * 50;
+    if(levelDust.y >= 50 && levelDust.y <=500 ){
+      levelDust.x = (i % 2) * 550;
+    }
+    container.addChild(levelDust);
 }
-container.addChild(Dustcontainer);
+for(var i = 0; i < 100; i++) {
+  const levelMap = new PIXI.Sprite(grass);
+  levelMap.anchor.set(0.5);
+  levelMap.x = ((i % 10) * 50)+50;
+  levelMap.y = (Math.floor(i / 10) * 50)+50;
+  container.addChild(levelMap);
+}
 export default container;
