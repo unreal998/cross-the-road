@@ -1,7 +1,6 @@
 import "pixi.js";
 import grassIcon from "../imgs/textures/grass.jpg";
 import dust from "../imgs/textures/dust.jpg"
-// import Dustcontainer from "./dust";
 
 const container = new PIXI.Container();
 
