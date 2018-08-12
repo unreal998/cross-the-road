@@ -1,7 +1,8 @@
 import "pixi.js";
 import grassIcon from "../imgs/textures/grass.jpg";
 import dust from "../imgs/textures/dust.jpg"
-
+import enemys from "../js/enemys";
+import hero from "../js/hero";
 const container = new PIXI.Container();
 
 const grass = PIXI.Texture.fromImage(grassIcon);
@@ -24,4 +25,19 @@ for(var i = 0; i < 100; i++) {
   levelMap.y = (Math.floor(i / 10) * 50)+50;
   container.addChild(levelMap);
 }
+
+function MonstersRender(){
+  enemys.forEach(function(item,i,arr){
+    
+    container.addChild(enemys[i]);
+  })
+}
+
+MonstersRender()
+
+const Rerender = setInterval(function(){
+  MonstersRender()
+},2000)
+
+container.addChild(hero);
 export default container;
