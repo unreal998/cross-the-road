@@ -25,14 +25,19 @@ for(var i = 0; i < 100; i++) {
   levelMap.y = (Math.floor(i / 10) * 50)+50;
   container.addChild(levelMap);
 }
+
 function MonstersRender(){
   enemys.forEach(function(item,i,arr){
+    
     container.addChild(enemys[i]);
   })
 }
+
 MonstersRender()
+
 const Rerender = setInterval(function(){
   MonstersRender()
 },2000)
+
 container.addChild(hero);
 export default container;

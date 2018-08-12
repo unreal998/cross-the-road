@@ -2,6 +2,7 @@ import "pixi.js";
 import enemy from "../imgs/textures/enemy.png";
 import hero from "./hero";
 import hitTestRectangle from "./hit";
+import container from "./level";
 class Enemy extends PIXI.Sprite{
   constructor(parent = null){
     super(PIXI.Texture.fromImage(enemy));
@@ -21,31 +22,30 @@ function addMonsters(monsters){
     i = new Enemy()
     enemys.push(i);
   };
-  
 }
 addMonsters(10)
 
-
-
-console.log(enemys.length);
-
 let positionY = 50;
 let positionLuck = 0;
-enemys.forEach(function(item,i,arr){
-  item.y +=positionY;
-  positionY += 50;
-  if(positionY >=550){
-    positionY = 50;
+let i = 0;
+function placeMonsters(){ 
+  for(i ; i <= enemys.length-1; i++ ){
+    enemys[i].y += positionY;
+    positionY += 50;
+    if(positionY >=550){
+      positionY = 50;
+    }
+    positionLuck=Math.random()*10;
+    if(positionLuck >= 5){
+      enemys[i].x = 550;
+      enemys[i].startPoint = "right";
+    }
+    else{
+      enemys[i].startPoint = "left";
+    }
   }
-  positionLuck=Math.random()*10;
-  if(positionLuck >= 5){
-    item.x = 550;
-    item.startPoint = "right";
-  }
-  else{
-    item.startPoint = "left";
-  }
-})
+}
+placeMonsters();
 
 export function monstersMove(delta){
   enemys.forEach(function(item,i,arr){
@@ -54,24 +54,28 @@ export function monstersMove(delta){
     item.height === hero.y ? console.log('true'): ``;
     item.width === hero.x ? console.log(`true`): ``;
     if(item.x > 550){
-      item.x = 0;
+      container.removeChild(item)
     }
     if(item.x < 0){
-      item.x = 550;
+      container.removeChild(item)
     }
     if(hitTestRectangle(hero, item)) { 
       hero.die();
     }
   })
 }
+
 let monsterCount = 10;
 const addMonstersCount = setInterval(function(){
-  monsterCount++;
+  monsterCount +=10;
   addMonsters(monsterCount)
   console.log(enemys.length);
+  placeMonsters();
 },2000);
-setTimeout(function(){
-  clearInterval(addMonstersCount);
-},10000);
+
+
+// setTimeout(function(){
+//   clearInterval(addMonstersCount);
+// },10000);
 
 export default enemys;
