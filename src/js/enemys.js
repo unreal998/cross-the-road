@@ -50,7 +50,7 @@ placeMonsters();
 export function monstersMove(delta){
   enemys.forEach(function(item,i,arr){
     const speed = (Math.random()*10).toFixed(0);
-    item.startPoint === "right" ? item.x-=(speed/2)+delta : item.x+=(speed/2)+delta;
+    item.startPoint === "right" ? item.x-=(speed/3)+delta : item.x+=(speed/3)+delta;
     item.height === hero.y ? console.log('true'): ``;
     item.width === hero.x ? console.log(`true`): ``;
     if(item.x > 550){

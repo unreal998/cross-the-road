@@ -3,10 +3,14 @@ import grassIcon from "../imgs/textures/grass.jpg";
 import dust from "../imgs/textures/dust.jpg"
 import enemys from "../js/enemys";
 import hero from "../js/hero";
+import barels from "../js/barell";
+
 const container = new PIXI.Container();
 
 const grass = PIXI.Texture.fromImage(grassIcon);
 const Dust = PIXI.Texture.fromImage(dust)
+
+
 
 for (var i = 0; i < 144; i++) {
     const levelDust = new PIXI.Sprite(Dust);
@@ -18,6 +22,8 @@ for (var i = 0; i < 144; i++) {
     }
     container.addChild(levelDust);
 }
+
+
 for(var i = 0; i < 100; i++) {
   const levelMap = new PIXI.Sprite(grass);
   levelMap.anchor.set(0.5);
@@ -26,6 +32,7 @@ for(var i = 0; i < 100; i++) {
   container.addChild(levelMap);
 }
 
+
 function MonstersRender(){
   enemys.forEach(function(item,i,arr){
     
@@ -33,7 +40,14 @@ function MonstersRender(){
   })
 }
 
+
 MonstersRender()
+function BarrelsRender(){
+  barels.forEach(function(item, i, arr){
+    container.addChild(barels[i])
+  })
+}
+BarrelsRender();
 
 const Rerender = setInterval(function(){
   MonstersRender()
