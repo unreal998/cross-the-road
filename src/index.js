@@ -6,8 +6,8 @@ document.body.appendChild(app.view);
 
 app.stage.addChild(container);
 
-app.ticker.add(function(){
-  monstersMove()
+app.ticker.add(function(delta){
+  monstersMove(delta)
 })
 container.x = (app.screen.width - container.width)/2;
 container.y = (app.screen.height - container.height)/2;
