@@ -2,7 +2,7 @@ import "pixi.js";
 import grassIcon from "../imgs/textures/grass.jpg";
 import dust from "../imgs/textures/dust.jpg"
 import oceanIcon from "../imgs/textures/ocean.png";
-import asphaltIcon from "../imgs/textures/asphalt.png"
+import asphaltIcon from "../imgs/textures/asphalt.png";
 const container = new PIXI.Container();
 
 const grass = PIXI.Texture.fromImage(grassIcon);
