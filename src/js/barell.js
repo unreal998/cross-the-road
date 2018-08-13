@@ -1,7 +1,7 @@
 import "pixi.js";
 import barrelTexture from "../imgs/textures/barrel.png";
 import hero from "./hero";
-
+import hitTestRectangle from "./hit";
 class Barell extends PIXI.Sprite{
   constructor(parent = null){
     super(PIXI.Texture.fromImage(barrelTexture))
@@ -12,8 +12,9 @@ class Barell extends PIXI.Sprite{
     me.roll = () => {
       hero.y +=5;
       me.y +=5;
-      if(me.y>550){
+      if(me.y>=550){
           hero.die();
+          me.y = 600;
       }
     }
     if(parent){
@@ -39,5 +40,13 @@ function placeBarrels(){
   }
 }
 placeBarrels();
+
+export function barelPick(){
+  barels.forEach(function(item,i,arr){
+    if(hitTestRectangle(hero, item)) { 
+      item.roll()
+    }
+  })
+}
 
 export default barels;

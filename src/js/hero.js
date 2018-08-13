@@ -1,6 +1,7 @@
 import "pixi.js";
 import heroImg from "../imgs/textures/hero.png";
 import keyboard from "./keyboard";
+import health, {healthMinus} from "./health";
 
 class Hero extends PIXI.Sprite{
   constructor(){
@@ -10,10 +11,15 @@ class Hero extends PIXI.Sprite{
     me.x = 250;
     me.y = 550;
     me.interactive = true;
-    me.lifes = 3;
+    me.lifes = health.length;
     me.die = () =>{
       me.y = 550;
-      me.lifes -=1;
+      me.lifes --;
+      healthMinus();
+      if(me.lifes <= 0){
+        me.lifes = 0
+        me.y = 0;
+      }
     }
     me.roll = false;
 
