@@ -2,7 +2,7 @@ import "pixi.js";
 import heroImg from "../imgs/textures/hero.png";
 import keyboard from "./keyboard";
 import health, {healthMinus} from "./health";
-
+import container from "./level"
 class Hero extends PIXI.Sprite{
   constructor(){
     super(PIXI.Texture.fromImage(heroImg))
@@ -56,4 +56,6 @@ class Hero extends PIXI.Sprite{
 }
 
 const hero = new Hero()
+
+container.addChild(hero);
 export default hero;

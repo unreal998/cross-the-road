@@ -20,11 +20,10 @@ class Enemy extends PIXI.Sprite{
 const enemys = [];
 const monstersLen = asphaltLines.length;
 function addMonsters(monsters){
-  const line = asphaltLines;
   for (let i=0; enemys.length < monsters; i++ ){
     let k = i;
     k = new Enemy()
-    k.y = line[i]-50;
+    k.y = asphaltLines[i]-50;
     enemys.push(k);
   };
 }

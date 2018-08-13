@@ -1,7 +1,7 @@
 import "pixi.js";
 import healthTexture from "../imgs/textures/hp.png";
 import container from "./level";
-import hero from "./hero";
+
 
 class Health extends PIXI.Sprite{
   constructor(){
@@ -20,7 +20,7 @@ function generateHealth(lifes){
     health.push(i);
   }
 }
-generateHealth(5);
+generateHealth(2);
 
 function placeHealth(){ 
   let healthNext = 0

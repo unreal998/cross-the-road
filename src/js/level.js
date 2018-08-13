@@ -1,7 +1,6 @@
 import "pixi.js";
 import grassIcon from "../imgs/textures/grass.jpg";
 import dust from "../imgs/textures/dust.jpg"
-import hero from "../js/hero";
 import oceanIcon from "../imgs/textures/ocean.png";
 import asphaltIcon from "../imgs/textures/asphalt.png"
 const container = new PIXI.Container();
@@ -67,12 +66,11 @@ function oceanMap(count){
   }
 }
 
-grassMap(3);
+grassMap(2);
+asphaltMap(1);
 oceanMap(2);
 asphaltMap(3);
-oceanMap(2);
+oceanMap(1);
+asphaltMap(1);
 
-
-
-container.addChild(hero);
 export default container;
