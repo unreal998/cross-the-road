@@ -6,9 +6,9 @@ import {healthRender} from "./js/health";
 
 var app = new PIXI.Application(600, 600, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
-
 app.stage.addChild(container);
-healthRender();
+
+healthRender()
 app.ticker.add(function(delta){
   monstersMove(delta);
   barelPick()
