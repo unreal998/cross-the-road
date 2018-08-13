@@ -1,6 +1,8 @@
 import "pixi.js";
 import heroImg from "../imgs/textures/hero.png";
 import keyboard from "./keyboard";
+import health, {healthMinus} from "./health";
+import container from "./level"
 class Hero extends PIXI.Sprite{
   constructor(){
     super(PIXI.Texture.fromImage(heroImg))
@@ -9,11 +11,22 @@ class Hero extends PIXI.Sprite{
     me.x = 250;
     me.y = 550;
     me.interactive = true;
+    me.lifes = health.length;
+    me.die = () =>{
+      me.y = 550;
+      me.lifes --;
+      healthMinus();
+      if(me.lifes <= 0){
+        me.lifes = 0
+        me.y = 0;
+      }
+    }
+    me.roll = false;
+
     let left = keyboard(37),
       up = keyboard(38),
       right = keyboard(39),
       down = keyboard(40);
-
     left.press = () => {
       me.x -= 25;
       if(me.x < 0){
@@ -22,6 +35,7 @@ class Hero extends PIXI.Sprite{
     };
     up.press = () => {
       me.y -= 25;
+      console.log(me.y - 50);
       if(me.y < 0){
         me.y += 25;
       }
@@ -42,10 +56,6 @@ class Hero extends PIXI.Sprite{
 }
 
 const hero = new Hero()
-hero.lifes = 3;
-hero.die = () =>{
-  hero.y = 550;
-  hero.lifes -=1;
-  console.log(hero.lifes);
-}
+
+container.addChild(hero);
 export default hero;

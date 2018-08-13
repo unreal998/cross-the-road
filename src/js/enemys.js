@@ -2,7 +2,8 @@ import "pixi.js";
 import enemy from "../imgs/textures/enemy.png";
 import hero from "./hero";
 import hitTestRectangle from "./hit";
-import container from "./level";
+import container,{ asphaltLines } from "./level";
+
 class Enemy extends PIXI.Sprite{
   constructor(parent = null){
     super(PIXI.Texture.fromImage(enemy));
@@ -17,21 +18,22 @@ class Enemy extends PIXI.Sprite{
   }
 }
 const enemys = [];
+const monstersLen = asphaltLines.length;
 function addMonsters(monsters){
   for (let i=0; enemys.length < monsters; i++ ){
-    i = new Enemy()
-    enemys.push(i);
+    let k = i;
+    k = new Enemy()
+    k.y = asphaltLines[i]-50;
+    enemys.push(k);
   };
 }
-addMonsters(10)
+addMonsters(monstersLen)
 
 let positionY = 50;
 let positionLuck = 0;
 let i = 0;
 function placeMonsters(){ 
   for(i ; i <= enemys.length-1; i++ ){
-    enemys[i].y += positionY;
-    positionY += 50;
     if(positionY >=550){
       positionY = 50;
     }
@@ -39,9 +41,11 @@ function placeMonsters(){
     if(positionLuck >= 5){
       enemys[i].x = 550;
       enemys[i].startPoint = "right";
+      
     }
     else{
       enemys[i].startPoint = "left";
+      enemys[i].scale.set(-0.7,0.7);
     }
   }
 }
@@ -50,9 +54,7 @@ placeMonsters();
 export function monstersMove(delta){
   enemys.forEach(function(item,i,arr){
     const speed = (Math.random()*10).toFixed(0);
-    item.startPoint === "right" ? item.x-=(speed/2)+delta : item.x+=(speed/2)+delta;
-    item.height === hero.y ? console.log('true'): ``;
-    item.width === hero.x ? console.log(`true`): ``;
+    item.startPoint === "right" ? item.x-=((speed/4)+delta) : item.x+=(speed/4)+delta;
     if(item.x > 550){
       container.removeChild(item)
     }
@@ -65,14 +67,23 @@ export function monstersMove(delta){
   })
 }
 
-let monsterCount = 10;
-const addMonstersCount = setInterval(function(){
-  monsterCount +=10;
-  addMonsters(monsterCount)
-  console.log(enemys.length);
-  placeMonsters();
-},2000);
+function MonstersRender(){
+  enemys.forEach(function(item,i,arr){
+    
+    container.addChild(enemys[i]);
+  })
+}
 
+MonstersRender()
+
+let monsterCount = monstersLen;
+
+const addMonstersCount = setInterval(function(){
+  monsterCount +=monstersLen;
+  addMonsters(monsterCount)
+  placeMonsters();
+  MonstersRender()
+},2000);
 
 // setTimeout(function(){
 //   clearInterval(addMonstersCount);
