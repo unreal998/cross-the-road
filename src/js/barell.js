@@ -24,27 +24,45 @@ class Barell extends PIXI.Sprite{
   }
 }
 let barels = [];
+let k = 0;
 let BarelLen = oceanLines.length;
 function addBarells(barelsCount){
   for (let i=0; barels.length < barelsCount; i++ ){
+    if(k > BarelLen-1){
+      k = 0
+    }
     i = new Barell()
+    i.y = oceanLines[k]-50;
     barels.push(i);
+    k++
   };
 }
 
-addBarells(BarelLen);
+addBarells(8);
 
+let p = 0;
 function placeBarrels(){ 
   for(let i = 0 ; i <= barels.length-1; i++ ){
-    let enemysLine = oceanLines[i]-50
-    barels[i].y = enemysLine;
-    barels[i].y > 510 || barels[i].y < 10 ? barels[i].y = 50 : false
+    if(p > BarelLen-1){
+      p = 0
+    }
+    let BarelLine = oceanLines[p]-50
+    barels[i].y = BarelLine;
     barels[i].x += ((Math.random()*10).toFixed(0))*50;
-    barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = 50 : false
+    barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = ((Math.random()*10).toFixed(0))*50 : false
+    if(i-1 < 0){
+
+    }
+    else if(barels[i-1].x === barels[i].x){
+      barels[i].x += ((Math.random()*10).toFixed(0))*50;
+      barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = ((Math.random()*10).toFixed(0))*50 : false
+    }
+    p++;
   }
 }
 placeBarrels();
-
+addBarells(BarelLen);
+placeBarrels();
 export function barelPick(){
   barels.forEach(function(item,i,arr){
     if(hitTestRectangle(hero, item)) { 

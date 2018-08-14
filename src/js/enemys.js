@@ -12,7 +12,7 @@ class Enemy extends PIXI.Sprite{
     me.scale.set(0.7);
     me.anchor.set(0.5);
     me.y =0;
-    me.speed = Math.random*10;
+    me.speed = (Math.random()*10).toFixed(0);
     if(parent){
       parent.addChild(me);
     }
@@ -55,8 +55,7 @@ placeMonsters();
 
 export function monstersMove(delta){
   enemys.forEach(function(item,i,arr){
-    const speed = (Math.random()*10).toFixed(0);
-    item.startPoint === "right" ? item.x-=((speed/4)+delta) : item.x+=(speed/4)+delta;
+    item.startPoint === "right" ? item.x-=((item.speed/4)+delta) : item.x+=(item.speed/4)+delta;
     if(item.x > 550){
       container.removeChild(item)
     }
@@ -83,7 +82,6 @@ let timer = ((Math.random()*10000)/3).toFixed(0);
 const addMonstersCount = setInterval(function(){
   monsterCount +=monstersLen;
   timer = ((Math.random()*10000)/3).toFixed(0);
-  console.log(timer);
   addMonsters(monsterCount)
   placeMonsters();
   MonstersRender()

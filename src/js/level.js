@@ -66,11 +66,13 @@ function oceanMap(count){
   }
 }
 
-grassMap(2);
-asphaltMap(1);
-oceanMap(2);
-asphaltMap(3);
+grassMap(1);
 oceanMap(1);
 asphaltMap(1);
-
+oceanMap(1);
+asphaltMap(1);
+oceanMap(1);
+asphaltMap(2);
+grassMap(1);
+asphaltMap(1);
 export default container;

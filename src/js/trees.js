@@ -17,35 +17,41 @@ class Trees extends PIXI.Sprite{
 }
 let trees = [];
 let treeslLen = grassLines.length;
+let k = 0;
 function addTrees(treesCount){
   for (let i=0; trees.length < treesCount; i++ ){
-    let k = i;
-    k = new Trees()
-    k.y = grassLines[i]-50;
-      trees.push(k);
+    if(k > treeslLen-1){
+      k = 0
+    }
+    i = new Trees()
+    i.y = grassLines[k]-50;
+    trees.push(i);
+    k++
   };
 }
 
-addTrees(treeslLen);
+addTrees(10);
 
+let p = 0;
 function placeTrees(){ 
   for(let i = 0 ; i <= trees.length-1; i++ ){
-    let treesLine = grassLines[i]-50
+    if(p > treeslLen-1){
+      p = 0
+    }
+    let treesLine = grassLines[p]-50
     trees[i].y = treesLine;
-    trees[i].y > 510 || trees[i].y < 10 ? trees[i].y = 50 : false
     trees[i].x += ((Math.random()*10).toFixed(0))*50;
-    trees[i].x > 510 || trees[i].x < 10 ? trees[i].x = 50 : false
+    trees[i].x > 510 || trees[i].x < 10 ? trees[i].x = 100 : false
+    if(i-1 < 0){
+    }
+    else if(trees[i-1].x === trees[i].x){
+      trees[i].x += ((Math.random()*10).toFixed(0))*50;
+      trees[i].x > 510 || trees[i].x < 10 ? trees[i].x = 100 : false
+    }
+    p++
   }
 }
 placeTrees();
-
-export function treesPick(){
-  trees.forEach(function(item,i,arr){
-    if(hitTestRectangle(hero, item)) { 
-      
-    }
-  })
-}
 
 function treesRender(){
   trees.forEach(function(item, i, arr){

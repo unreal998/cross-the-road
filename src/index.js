@@ -5,7 +5,7 @@ import youWin from "./js/youWin";
 import { monstersMove } from "./js/enemys";
 import {barelPick } from "./js/barell";
 import {healthRender} from "./js/health";
-import {treesPick} from "./js/trees";
+import "./js/trees";
 import hero from "./js/hero";
 
 var app = new PIXI.Application(600, 600, {backgroundColor : 0x1099bb});
@@ -35,7 +35,6 @@ function end(){
 app.ticker.add(function(delta){
   monstersMove(delta);
   barelPick();
-  treesPick();
   end();
 })
 container.x = (app.screen.width - container.width)/2;
