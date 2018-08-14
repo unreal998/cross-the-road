@@ -3,6 +3,7 @@ import grassIcon from "../imgs/textures/grass.jpg";
 import dust from "../imgs/textures/dust.jpg"
 import oceanIcon from "../imgs/textures/ocean.png";
 import asphaltIcon from "../imgs/textures/asphalt.png";
+import {levelSettings} from "./settings";
 const container = new PIXI.Container();
 
 const grass = PIXI.Texture.fromImage(grassIcon);
@@ -24,7 +25,7 @@ let levelheight = 50;
 export let grassLines = [];
 export let asphaltLines = [];
 export let oceanLines = [];
-function grassMap(count){
+export function grassMap(count){
   for(var i = 0; i < 10*count; i++) {
     const grassMap = new PIXI.Sprite(grass);
     grassMap.anchor.set(0.5);
@@ -39,7 +40,7 @@ function grassMap(count){
   }
 }
 
-function asphaltMap(count){
+export function asphaltMap(count){
   for(var i = 0; i < 10*count; i++) {
     const asphaltMap = new PIXI.Sprite(asphalt);
     asphaltMap.anchor.set(0.5);
@@ -52,7 +53,7 @@ function asphaltMap(count){
     asphaltLines.push(i);
   }
 }
-function oceanMap(count){
+export function oceanMap(count){
   for(var i = 0; i < 10*count; i++) {
     const oceanMap = new PIXI.Sprite(ocean);
     oceanMap.anchor.set(0.5);
@@ -66,13 +67,5 @@ function oceanMap(count){
   }
 }
 
-grassMap(1);
-oceanMap(1);
-asphaltMap(1);
-oceanMap(1);
-asphaltMap(1);
-oceanMap(1);
-asphaltMap(2);
-grassMap(1);
-asphaltMap(1);
+levelSettings();
 export default container;

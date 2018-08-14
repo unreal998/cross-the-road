@@ -49,13 +49,13 @@ function placeBarrels(){
     let BarelLine = oceanLines[p]-50
     barels[i].y = BarelLine;
     barels[i].x += ((Math.random()*10).toFixed(0))*50;
-    barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = ((Math.random()*10).toFixed(0))*50 : false
+    barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = 100 : false
     if(i-1 < 0){
-
+      
     }
     else if(barels[i-1].x === barels[i].x){
       barels[i].x += ((Math.random()*10).toFixed(0))*50;
-      barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = ((Math.random()*10).toFixed(0))*50 : false
+      barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = 100 : false
     }
     p++;
   }

@@ -1,5 +1,6 @@
 import "pixi.js";
 import container from "./js/level";
+import "./js/settings";
 import youLoose from "./js/youLoose";
 import youWin from "./js/youWin";
 import { monstersMove } from "./js/enemys";
