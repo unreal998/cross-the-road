@@ -1,8 +1,9 @@
 import "pixi.js";
-import enemy from "../imgs/textures/enemy.png";
 import hero from "./hero";
-import hitTestRectangle from "./hit";
+import hitTestRectangle from "./utils/hit";
 import container,{ asphaltLines } from "./level";
+import enemy from "../imgs/textures/enemy.png"
+// import enemySprite from "../imgs/textures/MonsterSprites.png";
 
 class Enemy extends PIXI.Sprite{
   constructor(parent = null){
@@ -28,6 +29,7 @@ function addMonsters(monsters){
   };
 }
 addMonsters(monstersLen)
+
 
 let positionY = 50;
 let positionLuck = 0;
@@ -77,16 +79,14 @@ function MonstersRender(){
 MonstersRender()
 
 let monsterCount = monstersLen;
-
+let timer = ((Math.random()*10000)/3).toFixed(0);
 const addMonstersCount = setInterval(function(){
   monsterCount +=monstersLen;
+  timer = ((Math.random()*10000)/3).toFixed(0);
+  console.log(timer);
   addMonsters(monsterCount)
   placeMonsters();
   MonstersRender()
-},2000);
-
-// setTimeout(function(){
-//   clearInterval(addMonstersCount);
-// },10000);
+},timer);
 
 export default enemys;
