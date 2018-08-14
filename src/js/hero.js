@@ -1,10 +1,10 @@
 import "pixi.js";
 import heroImg from "../imgs/textures/hero.png";
-import keyboard from "./keyboard";
+import keyboard from "./utils/keyboard";
 import health, {healthMinus} from "./health";
 import container from "./level";
 import trees from "./trees";
-import hitTestRectangle from "./hit";
+import hitTestRectangle from "./utils/hit";
 class Hero extends PIXI.Sprite{
   constructor(){
     super(PIXI.Texture.fromImage(heroImg))
@@ -31,7 +31,7 @@ class Hero extends PIXI.Sprite{
       down = keyboard(40);
     left.press = () => {
       me.x -= 25;
-      if(me.x < 0 ){
+      if(me.x < 40 ){
         me.x += 25;
       };
       trees.forEach(function(item,i,arr){
@@ -53,7 +53,7 @@ class Hero extends PIXI.Sprite{
     };
     right.press = () => {
       me.x += 25;
-      if(me.x > 550){
+      if(me.x > 500){
         me.x -= 25;
       }
       trees.forEach(function(item,i,arr){

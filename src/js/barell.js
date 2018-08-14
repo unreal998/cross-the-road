@@ -2,7 +2,7 @@ import "pixi.js";
 import container,{ oceanLines }  from "./level";
 import barrelTexture from "../imgs/textures/barrel.png";
 import hero from "./hero";
-import hitTestRectangle from "./hit";
+import hitTestRectangle from "./utils/hit";
 class Barell extends PIXI.Sprite{
   constructor(parent = null){
     super(PIXI.Texture.fromImage(barrelTexture))

@@ -2,7 +2,7 @@ import "pixi.js";
 import container,{ grassLines }  from "./level";
 import treeTexture from "../imgs/textures/tree.png";
 import hero from "./hero";
-import hitTestRectangle from "./hit";
+import hitTestRectangle from "./utils/hit";
 class Trees extends PIXI.Sprite{
   constructor(parent = null){
     super(PIXI.Texture.fromImage(treeTexture))
