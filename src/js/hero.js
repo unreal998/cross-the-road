@@ -2,7 +2,9 @@ import "pixi.js";
 import heroImg from "../imgs/textures/hero.png";
 import keyboard from "./keyboard";
 import health, {healthMinus} from "./health";
-import container from "./level"
+import container from "./level";
+import trees from "./trees";
+import hitTestRectangle from "./hit";
 class Hero extends PIXI.Sprite{
   constructor(){
     super(PIXI.Texture.fromImage(heroImg))
@@ -29,28 +31,47 @@ class Hero extends PIXI.Sprite{
       down = keyboard(40);
     left.press = () => {
       me.x -= 25;
-      if(me.x < 0){
+      if(me.x < 0 ){
         me.x += 25;
-      }
+      };
+      trees.forEach(function(item,i,arr){
+        if(hitTestRectangle(me, item)) { 
+          me.x += 25;
+        }
+      });
     };
     up.press = () => {
       me.y -= 25;
-      console.log(me.y - 50);
       if(me.y < 0){
         me.y += 25;
       }
+      trees.forEach(function(item,i,arr){
+        if(hitTestRectangle(me, item)) { 
+          me.y += 25;
+        }
+      });
     };
     right.press = () => {
       me.x += 25;
       if(me.x > 550){
         me.x -= 25;
       }
+      trees.forEach(function(item,i,arr){
+        if(hitTestRectangle(me, item)) { 
+          me.x -= 25;
+        }
+      });
     };
     down.press = () => {
       me.y += 25;
       if(me.y > 550){
         me.y -= 25;
       }
+      trees.forEach(function(item,i,arr){
+        if(hitTestRectangle(me, item)) { 
+          me.y -= 25;
+        }
+      });
     };
   }
 }

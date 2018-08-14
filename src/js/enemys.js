@@ -2,25 +2,15 @@ import "pixi.js";
 import hero from "./hero";
 import hitTestRectangle from "./hit";
 import container,{ asphaltLines } from "./level";
-
-import enemySprite from "../imgs/textures/MonsterSprites.png";
+import enemy from "../imgs/textures/enemy.png"
+// import enemySprite from "../imgs/textures/MonsterSprites.png";
 
 class Enemy extends PIXI.Sprite{
   constructor(parent = null){
-    const rect = new PIXI.Rectangle(0,0,50,50);
-    const texture = PIXI.Texture.fromImage(enemySprite);
-    texture.frame = rect;
-    super(texture);
-    let move = setInterval(function(){
-      if(rect.x >= 50*49){
-        rect.x = 0;
-      } 
-      rect.x += 50;
-      me.texture.frame = rect;
-    },25)
+    super(PIXI.Texture.fromImage(enemy));
     const me = this;
     me.scale.set(0.7);
-    me.anchor.set(1);
+    me.anchor.set(0.5);
     me.y =0;
     me.speed = Math.random*10;
     if(parent){
