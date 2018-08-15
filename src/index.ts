@@ -1,6 +1,7 @@
-import "pixi.js";
+import * as PIXI from "./pixi";
 import container from "./js/level";
 import "./js/settings";
+import img  from "./js/imgs";
 import youLoose from "./js/youLoose";
 import youWin from "./js/youWin";
 import { monstersMove } from "./js/enemys";
@@ -33,7 +34,7 @@ function end(){
   youWin.visible = false;
 }
 
-app.ticker.add(function(delta){
+app.ticker.add(function(delta:number){
   monstersMove(delta);
   barelPick();
   end();

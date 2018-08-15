@@ -1,11 +1,11 @@
-import "pixi.js";
+import * as PIXI from "../pixi"; 
 import container,{ oceanLines }  from "./level";
-import barrelTexture from "../imgs/textures/barrel.png";
+import "../imgs/textures/barrel.png";
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
 class Barell extends PIXI.Sprite{
-  constructor(parent = null){
-    super(PIXI.Texture.fromImage(barrelTexture))
+  constructor(){
+    super(PIXI.Texture.fromImage("../imgs/textures/barrel.png"))
     const me = this;
     me.anchor.set(0.5);
     me.x = 0;
@@ -18,22 +18,20 @@ class Barell extends PIXI.Sprite{
           me.y = 600;
       }
     }
-    if(parent){
-      parent.addChild(me);
-    }
   }
 }
-let barels = [];
+let barels:Array<Barell> = [];
 let k = 0;
 let BarelLen = oceanLines.length;
-function addBarells(barelsCount){
+let examp:Barell
+function addBarells(barelsCount:number){
   for (let i=0; barels.length < barelsCount; i++ ){
     if(k > BarelLen-1){
       k = 0
     }
-    i = new Barell()
-    i.y = oceanLines[k]-50;
-    barels.push(i);
+    examp = new Barell()
+    examp.y = oceanLines[k]-50;
+    barels.push(examp);
     k++
   };
 }
@@ -48,13 +46,13 @@ function placeBarrels(){
     }
     let BarelLine = oceanLines[p]-50
     barels[i].y = BarelLine;
-    barels[i].x += ((Math.random()*10).toFixed(0))*50;
+    barels[i].x += +((Math.random()*10).toFixed(0))*50;
     barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = 100 : false
     if(i-1 < 0){
-      
+
     }
     else if(barels[i-1].x === barels[i].x){
-      barels[i].x += ((Math.random()*10).toFixed(0))*50;
+      barels[i].x += +((Math.random()*10).toFixed(0))*50;
       barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = 100 : false
     }
     p++;

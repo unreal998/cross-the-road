@@ -1,15 +1,15 @@
-import "pixi.js";
-import grassIcon from "../imgs/textures/grass.jpg";
-import dust from "../imgs/textures/dust.jpg"
-import oceanIcon from "../imgs/textures/ocean.png";
-import asphaltIcon from "../imgs/textures/asphalt.png";
+import * as PIXI from "../pixi";
+import "../imgs/textures/grass.jpg";
+import "../imgs/textures/dust.jpg"
+import "../imgs/textures/ocean.png" ;
+import "../imgs/textures/asphalt.png";
 import {levelSettings} from "./settings";
 const container = new PIXI.Container();
 
-const grass = PIXI.Texture.fromImage(grassIcon);
-const ocean = PIXI.Texture.fromImage(oceanIcon);
-const asphalt = PIXI.Texture.fromImage(asphaltIcon);
-const Dust = PIXI.Texture.fromImage(dust)
+const grass = PIXI.Texture.fromImage("../imgs/textures/grass.jpg");
+const ocean = PIXI.Texture.fromImage("../imgs/textures/ocean.png");
+const asphalt = PIXI.Texture.fromImage( "../imgs/textures/asphalt.png");
+const Dust = PIXI.Texture.fromImage("../imgs/textures/dust.jpg")
 
 for (var i = 0; i < 144; i++) {
     const levelDust = new PIXI.Sprite(Dust);
@@ -22,10 +22,10 @@ for (var i = 0; i < 144; i++) {
     container.addChild(levelDust);
 }
 let levelheight = 50;
-export let grassLines = [];
-export let asphaltLines = [];
-export let oceanLines = [];
-export function grassMap(count){
+export let grassLines:Array<number> = [];
+export let asphaltLines:Array<number> = [];
+export let oceanLines:Array<number> = [];
+export function grassMap(count:number){
   for(var i = 0; i < 10*count; i++) {
     const grassMap = new PIXI.Sprite(grass);
     grassMap.anchor.set(0.5);
@@ -40,7 +40,7 @@ export function grassMap(count){
   }
 }
 
-export function asphaltMap(count){
+export function asphaltMap(count:number){
   for(var i = 0; i < 10*count; i++) {
     const asphaltMap = new PIXI.Sprite(asphalt);
     asphaltMap.anchor.set(0.5);
@@ -53,7 +53,7 @@ export function asphaltMap(count){
     asphaltLines.push(i);
   }
 }
-export function oceanMap(count){
+export function oceanMap(count:number){
   for(var i = 0; i < 10*count; i++) {
     const oceanMap = new PIXI.Sprite(ocean);
     oceanMap.anchor.set(0.5);
