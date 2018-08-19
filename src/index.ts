@@ -1,7 +1,6 @@
 import * as PIXI from "../node_modules/pixi.js/dist/pixi";
 import container from "./js/level";
 import "./js/settings";
-
 import youLoose from "./js/youLoose";
 import youWin from "./js/youWin";
 import { monstersMove } from "./js/enemys";
@@ -9,6 +8,7 @@ import {barelPick } from "./js/barell";
 import {healthRender} from "./js/health";
 import "./js/trees";
 import hero from "./js/hero";
+// import './css/styles.css';
 
 var app = new PIXI.Application(600, 600, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);

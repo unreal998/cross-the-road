@@ -13,7 +13,7 @@ class Health extends PIXI.Sprite{
 
 let k:object;
 const health:Array<Health>= [];
-function generateHealth(lifes:number){
+export function generateHealth(lifes:number){
   for(let i:number = 0; health.length <= lifes; i ++ ){
     k = new Health();
     health.push(k);
