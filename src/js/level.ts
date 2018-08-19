@@ -1,12 +1,8 @@
-import * as PIXI from "../pixi";
-import "../imgs/textures/grass.jpg";
-import "../imgs/textures/dust.jpg"
-import "../imgs/textures/ocean.png" ;
-import "../imgs/textures/asphalt.png";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import {levelSettings} from "./settings";
 const container = new PIXI.Container();
 
-const grass = PIXI.Texture.fromImage("../imgs/textures/grass.jpg");
+const grass = PIXI.Texture.from("../imgs/textures/grass.jpg");
 const ocean = PIXI.Texture.fromImage("../imgs/textures/ocean.png");
 const asphalt = PIXI.Texture.fromImage( "../imgs/textures/asphalt.png");
 const Dust = PIXI.Texture.fromImage("../imgs/textures/dust.jpg")

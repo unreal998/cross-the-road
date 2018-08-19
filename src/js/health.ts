@@ -1,4 +1,4 @@
-import * as PIXI from "../pixi";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 // import healthTexture from "../imgs/textures/hp.png";
 import container from "./level";
 

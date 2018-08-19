@@ -1,6 +1,5 @@
-import * as PIXI from "../pixi"; 
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi"; 
 import container,{ oceanLines }  from "./level";
-import "../imgs/textures/barrel.png";
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
 class Barell extends PIXI.Sprite{

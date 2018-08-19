@@ -1,6 +1,4 @@
-import * as PIXI from "../pixi";
-// import img from "./imgs";
-import "../imgs/textures/hero.png";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import keyboard from "./utils/keyboard";
 import health, {healthMinus} from "./health";
 import container from "./level";

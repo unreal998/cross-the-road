@@ -1,4 +1,4 @@
-import * as PIXI from "../pixi"; 
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi"; 
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
 import container,{ asphaltLines } from "./level";

@@ -1,7 +1,7 @@
-import "../pixi";
-import dust from "../imgs/textures/dust.jpg";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
+import "../imgs/textures/dust.jpg" ;
 const youWin = new PIXI.Container();
-const Dust = PIXI.Texture.fromImage(dust)
+const Dust = PIXI.Texture.fromImage("../imgs/textures/dust.jpg")
 
 for (var i = 0; i < 169; i++) {
   const levelDust = new PIXI.Sprite(Dust);
