@@ -1,31 +1,27 @@
-import "pixi.js";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
 import container,{ asphaltLines } from "./level";
-import enemy from "../imgs/textures/enemy.png"
+import imgs from "./imgs";
 // import enemySprite from "../imgs/textures/MonsterSprites.png";
 
 class Enemy extends PIXI.Sprite{
-  constructor(parent = null){
-    super(PIXI.Texture.fromImage(enemy));
-    const me = this;
-    me.scale.set(0.7);
-    me.anchor.set(0.5);
-    me.y =0;
-    me.speed = (Math.random()*10).toFixed(0);
-    if(parent){
-      parent.addChild(me);
-    }
+  constructor(){
+    super(PIXI.Texture.fromImage(imgs.enemy));
+    this.scale.set(0.7);
+    this.anchor.set(0.5);
+    this.y =0;
+    this.speed = (Math.random()*10).toFixed(0);
   }
 }
-const enemys = [];
+const enemys:Array<Enemy> = [];
 const monstersLen = asphaltLines.length;
-function addMonsters(monsters){
+let examp:Enemy
+function addMonsters(monsters:number){
   for (let i=0; enemys.length < monsters; i++ ){
-    let k = i;
-    k = new Enemy()
-    k.y = asphaltLines[i]-50;
-    enemys.push(k);
+    examp = new Enemy()
+    examp.y = asphaltLines[i]-50;
+    enemys.push(examp);
   };
 }
 addMonsters(monstersLen)
@@ -53,7 +49,7 @@ function placeMonsters(){
 }
 placeMonsters();
 
-export function monstersMove(delta){
+export function monstersMove(delta:number){
   enemys.forEach(function(item,i,arr){
     item.startPoint === "right" ? item.x-=((item.speed/4)+delta) : item.x+=(item.speed/4)+delta;
     if(item.x > 550){

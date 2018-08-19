@@ -2,7 +2,8 @@ const path = require('path');
 const HtmlWepbackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['babel-polyfill', './src/index.ts'],
+  devtool: 'inline-source-map',
   mode: 'development',
   output: {
     path: path.join(__dirname, '/dist'),
@@ -17,15 +18,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts)$/,
+        use: 'ts-loader',
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        options: { presets: ['env'] },
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
       },
       {
         test: /\.(css|scss|sass)$/,
@@ -43,6 +38,9 @@ module.exports = {
       },
 
     ],
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js','.jsx' ]
   },
   plugins: [
     new HtmlWepbackPlugin({

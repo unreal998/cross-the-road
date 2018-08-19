@@ -1,4 +1,4 @@
-import "pixi.js";
+import * as PIXI from "../node_modules/pixi.js/dist/pixi";
 import container from "./js/level";
 import "./js/settings";
 import youLoose from "./js/youLoose";
@@ -8,6 +8,7 @@ import {barelPick } from "./js/barell";
 import {healthRender} from "./js/health";
 import "./js/trees";
 import hero from "./js/hero";
+// import './css/styles.css';
 
 var app = new PIXI.Application(600, 600, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
@@ -33,7 +34,7 @@ function end(){
   youWin.visible = false;
 }
 
-app.ticker.add(function(delta){
+app.ticker.add(function(delta:number){
   monstersMove(delta);
   barelPick();
   end();
