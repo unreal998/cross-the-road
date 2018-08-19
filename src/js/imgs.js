@@ -7,6 +7,7 @@ import asphalt from "../imgs/textures/asphalt.png";
 import barrel from "../imgs/textures/barrel.png";
 import tree from "../imgs/textures/tree.png";
 import health from "../imgs/textures/hp.png";
+import enemy from "../imgs/textures/enemy.png";
 
 const imgs = {}
 
@@ -19,6 +20,7 @@ PIXI.loader
 .add(`barrelImg`, barrel)
 .add(`treeImg`, tree)
 .add(`healthImg`,health)
+.add(`enemyImg`,enemy)
 
 PIXI.loader.load((loader, resources) => {
     imgs.heroImg = resources.heroImg.texture;
@@ -29,5 +31,6 @@ PIXI.loader.load((loader, resources) => {
     imgs.barrelImg = resources.barrelImg.texture;
     imgs.treeImg = resources.treeImg.texture;
     imgs.healthImg = resources.healthImg.texture;
+    imgs.enemyImg = resources.enemyImg.texture;
 });
 export default imgs;

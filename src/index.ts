@@ -5,7 +5,7 @@ import hero from "./js/hero";
 import "./js/barell";
 // import youLoose from "./js/youLoose";
 // import youWin from "./js/youWin";
-// import { monstersMove } from "./js/enemys";
+import { monstersMove } from "./js/enemys";
 
 // import {healthRender} from "./js/health";
 
@@ -43,7 +43,7 @@ import "./js/barell";
   // }
   
   app.ticker.add(function(delta:number){
-    // monstersMove(delta);
+    monstersMove(delta);
     // barelPick();
     // end();
   })
