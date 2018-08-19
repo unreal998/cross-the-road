@@ -1,27 +1,29 @@
 import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
-// import healthTexture from "../imgs/textures/hp.png";
 import container from "./level";
+import imgs from '../js/imgs';
 
+PIXI.loader.load(imgs);
+PIXI.loader.load(container);
 
 class Health extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/hp.png"))
-    const me = this;
-    me.anchor.set(0.5);
-    me.scale.set(0.3, 0.3);
-    me.y = 0;
+    super(imgs.healthImg)
+    this.anchor.set(0.5);
+    this.scale.set(0.3, 0.3);
+    this.y = 0;
   }
 }
 let k:object;
 const health:Array<Health>= [];
+
+PIXI.loader.load(generateHealth);
 function generateHealth(lifes:number){
-  for(let i:number = 0; health.length <= lifes; i ++ ){
+  for(let i:number = 0; health.length <= 2; i ++ ){
     k = new Health();
     health.push(k);
   }
 }
-generateHealth(2);
-
+PIXI.loader.load(placeHealth);
 function placeHealth(){ 
   let healthNext = 0
   health.forEach(function(life,i,arr){
@@ -30,12 +32,13 @@ function placeHealth(){
     healthNext += 50;
   }
   )} 
-placeHealth();
+
 let i = 0;
 export function healthMinus(){
     container.removeChild(health[i]);
     i++;
 }
+PIXI.loader.load(healthRender);
 export function healthRender(){
   health.forEach(function(life,i,arr){
     container.addChild(life);

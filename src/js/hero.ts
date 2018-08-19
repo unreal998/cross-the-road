@@ -4,61 +4,63 @@ import health, {healthMinus} from "./health";
 import container from "./level";
 import trees from "./trees";
 import hitTestRectangle from "./utils/hit";
+import imgs from '../js/imgs';
+PIXI.loader.load(imgs);
+PIXI.loader.load(container);
+
 class Hero extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/hero.png"))
-    const me = this;
-    me.anchor.set(0.5);
-    me.x = 250;
-    me.y = 550;
-    me.interactive = true;
+    super(imgs.heroImg)
+    this.anchor.set(0.5);
+    this.x = 250;
+    this.y = 550;
     let left = keyboard(37),
       up = keyboard(38),
       right = keyboard(39),
       down = keyboard(40);
     left.press = () => {
-      me.x -= 25;
-      if(me.x < 40 ){
-        me.x += 25;
+      this.x -= 25;
+      if(this.x < 40 ){
+        this.x += 25;
       };
-      trees.forEach(function(item,i,arr){
-        if(hitTestRectangle(me, item)) { 
-          me.x += 25;
-        }
-      });
+      // trees.forEach(function(item,i,arr){
+      //   if(hitTestRectangle(me, item)) { 
+      //     me.x += 25;
+      //   }
+      // });
     };
     up.press = () => {
-      me.y -= 25;
-      if(me.y < 0){
-        me.y += 25;
+      this.y -= 25;
+      if(this.y < 0){
+        this.y += 25;
       }
-      trees.forEach(function(item,i,arr){
-        if(hitTestRectangle(me, item)) { 
-          me.y += 25;
-        }
-      });
+      // trees.forEach(function(item,i,arr){
+      //   if(hitTestRectangle(me, item)) { 
+      //     me.y += 25;
+      //   }
+      // });
     };
     right.press = () => {
-      me.x += 25;
-      if(me.x > 500){
-        me.x -= 25;
+      this.x += 25;
+      if(this.x > 500){
+        this.x -= 25;
       }
-      trees.forEach(function(item,i,arr){
-        if(hitTestRectangle(me, item)) { 
-          me.x -= 25;
-        }
-      });
+      // trees.forEach(function(item,i,arr){
+      //   if(hitTestRectangle(me, item)) { 
+      //     me.x -= 25;
+      //   }
+      // });
     };
     down.press = () => {
-      me.y += 25;
-      if(me.y > 550){
-        me.y -= 25;
+      this.y += 25;
+      if(this.y > 550){
+        this.y -= 25;
       }
-      trees.forEach(function(item,i,arr){
-        if(hitTestRectangle(me, item)) { 
-          me.y -= 25;
-        }
-      });
+      // trees.forEach(function(item,i,arr){
+      //   if(hitTestRectangle(me, item)) { 
+      //     me.y -= 25;
+      //   }
+      // });
     };
   }
   roll = false;
@@ -73,9 +75,10 @@ class Hero extends PIXI.Sprite{
     }
   }
 }
-
-const hero = new Hero();
-
-console.log(hero);
-container.addChild(hero);
+let hero:Hero;
+PIXI.loader.load(heroAdd)
+function heroAdd(){
+  hero = new Hero();
+  container.addChild(hero);
+}
 export default hero;

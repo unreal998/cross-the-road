@@ -1,38 +1,26 @@
-// import * as PIXI from "./pixi";
 import * as PIXI from '../node_modules/pixi.js/dist/pixi';
-import imgs from "./js/imgs";
-// import container from "./js/level";
-// import "./js/settings";
+import container from "./js/level";
+import './js/trees';
+import hero from "./js/hero";
+import "./js/barell";
 // import youLoose from "./js/youLoose";
 // import youWin from "./js/youWin";
 // import { monstersMove } from "./js/enemys";
-// import {barelPick } from "./js/barell";
-// import {healthRender} from "./js/health";
-// import "./js/trees";
-// import hero from "./js/hero";
 
+// import {healthRender} from "./js/health";
 
   var app = new PIXI.Application(600, 600, {backgroundColor : 0x1099bb});
   
   document.body.appendChild(app.view);
 
-  PIXI.loader
-  .add(imgs.heroImg)
-  .add(imgs.grassImg)
-  .add(imgs.asphaltImg)
-  .add(imgs.barrelImg)
-  .add(imgs.dustImg)
-  .add(imgs.oceanImg)
-  .add(imgs.treeImg)
-
-  .load(setup)
+  PIXI.loader.load(setup);
 
   function setup(){
+  container.x = (app.screen.width - container.width)/2;
+  container.y = (app.screen.height - container.height)/2;
+  app.stage.addChild(container);
 
-  let cat = new PIXI.Sprite(PIXI.loader.resources[imgs.heroImg].texture);
-  app.stage.addChild(cat);
 
-  // app.stage.addChild(container);
   // app.stage.addChild(youLoose);
   // app.stage.addChild(youWin);
   // healthRender()
@@ -54,11 +42,10 @@ import imgs from "./js/imgs";
   //   youWin.visible = false;
   // }
   
-  // app.ticker.add(function(delta:number){
-  //   monstersMove(delta);
-  //   barelPick();
-  //   end();
-  // })
-  // container.x = (app.screen.width - container.width)/2;
-  // container.y = (app.screen.height - container.height)/2;
-}
+  app.ticker.add(function(delta:number){
+    // monstersMove(delta);
+    // barelPick();
+    // end();
+  })
+
+  }

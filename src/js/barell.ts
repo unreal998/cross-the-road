@@ -2,9 +2,13 @@ import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import container,{ oceanLines }  from "./level";
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
+import imgs from '../js/imgs';
+
+PIXI.loader.load(imgs);
+PIXI.loader.load(container);
 class Barell extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/barrel.png"))
+    super(imgs.barrelImg)
     const me = this;
     me.anchor.set(0.5);
     me.x = 0;
@@ -21,11 +25,13 @@ class Barell extends PIXI.Sprite{
 }
 let barels:Array<Barell> = [];
 let k = 0;
-let BarelLen = oceanLines.length;
 let examp:Barell
+
+PIXI.loader.load(addBarells);
+
 function addBarells(barelsCount:number){
-  for (let i=0; barels.length < barelsCount; i++ ){
-    if(k > BarelLen-1){
+  for (let i=0; barels.length < 8; i++ ){
+    if(k > oceanLines.length-1){
       k = 0
     }
     examp = new Barell()
@@ -35,12 +41,14 @@ function addBarells(barelsCount:number){
   };
 }
 
-addBarells(8);
 
 let p = 0;
+
+PIXI.loader.load(placeBarrels);
+
 function placeBarrels(){ 
   for(let i = 0 ; i <= barels.length-1; i++ ){
-    if(p > BarelLen-1){
+    if(p > oceanLines.length-1){
       p = 0
     }
     let BarelLine = oceanLines[p]-50
@@ -57,21 +65,20 @@ function placeBarrels(){
     p++;
   }
 }
-placeBarrels();
-addBarells(BarelLen);
-placeBarrels();
-export function barelPick(){
-  barels.forEach(function(item,i,arr){
-    if(hitTestRectangle(hero, item)) { 
-      item.roll()
-    }
-  })
-}
 
+// export function barelPick(){
+//   barels.forEach(function(item,i,arr){
+//     if(hitTestRectangle(hero, item)) { 
+//       item.roll()
+//     }
+//   })
+// }
+
+PIXI.loader.load(BarrelsRender);
 function BarrelsRender(){
   barels.forEach(function(item, i, arr){
     container.addChild(barels[i])
   })
 }
-BarrelsRender();
+
 export default barels;

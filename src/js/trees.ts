@@ -1,9 +1,14 @@
 import * as PIXI from '../../node_modules/pixi.js/dist/pixi';
 import container,{ grassLines }  from "./level";
+import imgs from '../js/imgs';
+// import { treesSettings } from '../js/settings';
+
+PIXI.loader.load(imgs);
+PIXI.loader.load(container);
 
 class Trees extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/tree.png"))
+    super(imgs.treeImg)
     const me = this;
     me.anchor.set(0.5);
     me.x = 0;
@@ -11,12 +16,14 @@ class Trees extends PIXI.Sprite{
   }
 }
 let trees:Array<Trees> = [];
-let treeslLen = grassLines.length;
 let k = 0;
 let examp:Trees
-function addTrees(treesCount:number){
-  for (let i=0; trees.length < treesCount; i++ ){
-    if(k > treeslLen-1){
+
+PIXI.loader.load(addTrees);
+export function addTrees(treesCount:number){
+  for (let i=0; trees.length < 10; i++ ){
+    console.log(grassLines);
+    if(k > grassLines.length){
       k = 0
     }
     examp = new Trees()
@@ -26,12 +33,13 @@ function addTrees(treesCount:number){
   };
 }
 
-addTrees(10);
-
 let p = 0;
+
+PIXI.loader.load(placeTrees)
+
 function placeTrees(){ 
   for(let i = 0 ; i <= trees.length-1; i++ ){
-    if(p > treeslLen-1){
+    if(p > grassLines.length-1){
       p = 0
     }
     let treesLine = grassLines[p]-50;
@@ -48,12 +56,12 @@ function placeTrees(){
     p++
   }
 }
-placeTrees();
+PIXI.loader.load(treesRender)
 
 function treesRender(){
   trees.forEach(function(item, i, arr){
     container.addChild(trees[i])
   })
 }
-treesRender();
+
 export default trees;
