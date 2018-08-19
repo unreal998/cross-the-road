@@ -1,17 +1,16 @@
-import * as PIXI from "../pixi";
-// import healthTexture from "../imgs/textures/hp.png";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import container from "./level";
-
+import imgs from "./imgs";
 
 class Health extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/hp.png"))
-    const me = this;
-    me.anchor.set(0.5);
-    me.scale.set(0.3, 0.3);
-    me.y = 0;
+    super(PIXI.Texture.fromImage(imgs.health))
+    this.anchor.set(0.5);
+    this.scale.set(0.3, 0.3);
+    this.y = 0;
   }
 }
+
 let k:object;
 const health:Array<Health>= [];
 function generateHealth(lifes:number){

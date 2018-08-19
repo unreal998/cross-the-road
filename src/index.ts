@@ -1,7 +1,7 @@
-import * as PIXI from "./pixi";
+import * as PIXI from "../node_modules/pixi.js/dist/pixi";
 import container from "./js/level";
 import "./js/settings";
-import img  from "./js/imgs";
+
 import youLoose from "./js/youLoose";
 import youWin from "./js/youWin";
 import { monstersMove } from "./js/enemys";

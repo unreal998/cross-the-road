@@ -1,14 +1,13 @@
-import * as PIXI from "../pixi";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import container,{ grassLines }  from "./level";
-// import treeTexture from "../imgs/textures/tree.png";
+import imgs from './imgs'
 
 class Trees extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/tree.png"))
-    const me = this;
-    me.anchor.set(0.5);
-    me.x = 0;
-    me.y = 0;
+    super(PIXI.Texture.fromImage(imgs.tree))
+    this.anchor.set(0.5);
+    this.x = 0;
+    this.y = 0;
   }
 }
 let trees:Array<Trees> = [];

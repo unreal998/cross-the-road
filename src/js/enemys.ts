@@ -1,18 +1,17 @@
-import * as PIXI from "../pixi"; 
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
 import container,{ asphaltLines } from "./level";
-import "../imgs/textures/enemy.png"
+import imgs from "./imgs";
 // import enemySprite from "../imgs/textures/MonsterSprites.png";
 
 class Enemy extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/enemy.png"));
-    const me = this;
-    me.scale.set(0.7);
-    me.anchor.set(0.5);
-    me.y =0;
-    me.speed = (Math.random()*10).toFixed(0);
+    super(PIXI.Texture.fromImage(imgs.enemy));
+    this.scale.set(0.7);
+    this.anchor.set(0.5);
+    this.y =0;
+    this.speed = (Math.random()*10).toFixed(0);
   }
 }
 const enemys:Array<Enemy> = [];

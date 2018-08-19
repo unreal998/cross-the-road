@@ -1,21 +1,20 @@
-import * as PIXI from "../pixi"; 
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import container,{ oceanLines }  from "./level";
-import "../imgs/textures/barrel.png";
+import imgs from "./imgs";
 import hero from "./hero";
 import hitTestRectangle from "./utils/hit";
 class Barell extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/barrel.png"))
-    const me = this;
-    me.anchor.set(0.5);
-    me.x = 0;
-    me.y = 0;
-    me.roll = () => {
+    super(PIXI.Texture.fromImage(imgs.barrel))
+    this.anchor.set(0.5);
+    this.x = 0;
+    this.y = 0;
+    this.roll = () => {
       hero.y +=5;
-      me.y +=5;
-      if(me.y>=550){
+      this.y +=5;
+      if(this.y>=550){
           hero.die();
-          me.y = 600;
+          this.y = 600;
       }
     }
   }

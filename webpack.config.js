@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWepbackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['babel-polyfill', './src/index.ts'],
   devtool: 'inline-source-map',
   mode: 'development',
   output: {
@@ -21,8 +21,6 @@ module.exports = {
         test: /\.(js|jsx|ts)$/,
         use: 'ts-loader',
         exclude: /(node_modules|bower_components)/,
-        loaders: 'babel-loader',
-        options: { presets: ['env'] },
       },
       {
         test: /\.(css|scss|sass)$/,

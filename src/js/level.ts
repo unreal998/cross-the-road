@@ -1,15 +1,17 @@
-import * as PIXI from "../pixi";
-import "../imgs/textures/grass.jpg";
-import "../imgs/textures/dust.jpg"
-import "../imgs/textures/ocean.png" ;
-import "../imgs/textures/asphalt.png";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
+import imgs from "./imgs";
 import {levelSettings} from "./settings";
 const container = new PIXI.Container();
 
-const grass = PIXI.Texture.fromImage("../imgs/textures/grass.jpg");
-const ocean = PIXI.Texture.fromImage("../imgs/textures/ocean.png");
-const asphalt = PIXI.Texture.fromImage( "../imgs/textures/asphalt.png");
-const Dust = PIXI.Texture.fromImage("../imgs/textures/dust.jpg")
+const grass = PIXI.Texture.fromImage(imgs.grass);
+const ocean = PIXI.Texture.fromImage(imgs.ocean);
+const asphalt = PIXI.Texture.fromImage( imgs.asphalt);
+const Dust = PIXI.Texture.fromImage(imgs.dust)
+class Maps {
+  constructor(){
+    
+  }
+}
 
 for (var i = 0; i < 144; i++) {
     const levelDust = new PIXI.Sprite(Dust);
@@ -25,6 +27,7 @@ let levelheight = 50;
 export let grassLines:Array<number> = [];
 export let asphaltLines:Array<number> = [];
 export let oceanLines:Array<number> = [];
+
 export function grassMap(count:number){
   for(var i = 0; i < 10*count; i++) {
     const grassMap = new PIXI.Sprite(grass);

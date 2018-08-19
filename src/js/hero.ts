@@ -1,23 +1,24 @@
-import * as PIXI from "../pixi";
-// import img from "./imgs";
-import "../imgs/textures/hero.png";
+import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
+import imgs from "./imgs";
 import keyboard from "./utils/keyboard";
 import health, {healthMinus} from "./health";
 import container from "./level";
 import trees from "./trees";
 import hitTestRectangle from "./utils/hit";
+
+let left = keyboard(37),
+up = keyboard(38),
+right = keyboard(39),
+down = keyboard(40);
+
 class Hero extends PIXI.Sprite{
   constructor(){
-    super(PIXI.Texture.fromImage("../imgs/textures/hero.png"))
+    super(PIXI.Texture.fromImage(imgs.hero))
     const me = this;
-    me.anchor.set(0.5);
-    me.x = 250;
-    me.y = 550;
-    me.interactive = true;
-    let left = keyboard(37),
-      up = keyboard(38),
-      right = keyboard(39),
-      down = keyboard(40);
+    this.anchor.set(0.5);
+    this.x = 250;
+    this.y = 550;
+
     left.press = () => {
       me.x -= 25;
       if(me.x < 40 ){
@@ -77,7 +78,5 @@ class Hero extends PIXI.Sprite{
 }
 
 const hero = new Hero();
-
-console.log(hero);
 container.addChild(hero);
 export default hero;
