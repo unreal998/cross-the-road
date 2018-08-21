@@ -17,7 +17,7 @@ left.press = () => {
 };
 up.press = () => {
   hero.y -= 25;
-  if(hero.y < 0){
+  if(hero.y < -50){
     hero.y += 25;
   }
   treeCheck(false, 25)

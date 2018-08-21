@@ -10,7 +10,7 @@ function end(){
     youWin.visible = false
   );
   }
-  else if (hero.y === 0){
+  else if (hero.y <=  0){
     return (container.visible = false,
       youLoose.visible = false,
       youWin.visible = true);
