@@ -1,6 +1,6 @@
-import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
-import container,{ grassLines }  from "./level";
-import imgs from './imgs'
+import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
+import container,{ grassLines }  from "../level";
+import imgs from '../imgs'
 
 class Trees extends PIXI.Sprite{
   constructor(){

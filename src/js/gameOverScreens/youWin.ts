@@ -1,5 +1,5 @@
-import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
-import imgs from '../js/imgs'
+import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
+import imgs from '../imgs'
 
 const youWin = new PIXI.Container();
 const Dust = PIXI.Texture.fromImage(imgs.dust);

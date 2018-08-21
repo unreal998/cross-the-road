@@ -1,6 +1,6 @@
-import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
-import container from "./level";
-import imgs from "./imgs";
+import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
+import container from "../level";
+import imgs from "../imgs";
 
 class Health extends PIXI.Sprite{
   constructor(){
@@ -35,10 +35,12 @@ export function healthMinus(){
     container.removeChild(health[i]);
     i++;
 }
-export function healthRender(){
+
+function healthRender(){
   health.forEach(function(life,i,arr){
     container.addChild(life);
   });
 }
 
+healthRender()
 export default health;

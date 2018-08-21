@@ -1,10 +1,8 @@
 import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import imgs from "./imgs";
-import keyboard from "./utils/keyboard";
-import health, {healthMinus} from "./health";
+import health, {healthMinus} from "./levelItems/health";
 import container from "./level";
-import trees from "./trees";
-import hitTestRectangle from "./utils/hit";
+import "./controller";
 
 class Hero extends PIXI.Sprite{
   constructor(){
@@ -27,53 +25,6 @@ class Hero extends PIXI.Sprite{
 }
 
 const hero = new Hero();
-
-const left = keyboard(37),
-up = keyboard(38),
-right = keyboard(39),
-down = keyboard(40);
-
-function testCheck(horizontal:boolean, val:number){
-  trees.forEach(function(item,i,arr){
-    if(hitTestRectangle(hero, item)) { 
-      if(horizontal === true){
-        hero.x += val
-      }
-      else{
-        hero.y += val
-      }
-    }
-  });
-}
-
-left.press = () => {
-  hero.x -= 25;
-  if(hero.x < 40 ){
-    hero.x += 25;
-  };
-  testCheck(true, 25)
-};
-up.press = () => {
-  hero.y -= 25;
-  if(hero.y < 0){
-    hero.y += 25;
-  }
-  testCheck(false, 25)
-};
-right.press = () => {
-  hero.x += 25;
-  if(hero.x > 500){
-    hero.x -= 25;
-  }
-  testCheck(true, -25)
-};
-down.press = () => {
-  hero.y += 25;
-  if(hero.y > 550){
-    hero.y -= 25;
-  }
-  testCheck(false, -25)
-}
 
 container.addChild(hero);
 export default hero;

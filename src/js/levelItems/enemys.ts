@@ -1,9 +1,6 @@
-import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
-import hero from "./hero";
-import hitTestRectangle from "./utils/hit";
-import container,{ asphaltLines } from "./level";
-import imgs from "./imgs";
-// import enemySprite from "../imgs/textures/MonsterSprites.png";
+import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
+import container,{ asphaltLines } from "../level";
+import imgs from "../imgs";
 
 class Enemy extends PIXI.Sprite{
   constructor(){
@@ -57,9 +54,6 @@ export function monstersMove(delta:number){
     }
     if(item.x < 0){
       container.removeChild(item)
-    }
-    if(hitTestRectangle(hero, item)) { 
-      hero.die();
     }
   })
 }

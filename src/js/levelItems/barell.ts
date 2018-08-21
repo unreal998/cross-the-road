@@ -1,8 +1,8 @@
-import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
-import container,{ oceanLines }  from "./level";
-import imgs from "./imgs";
-import hero from "./hero";
-import hitTestRectangle from "./utils/hit";
+import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
+import container,{ oceanLines }  from "../level";
+import imgs from "../imgs";
+import hero from "../hero";
+
 class Barell extends PIXI.Sprite{
   constructor(){
     super(PIXI.Texture.fromImage(imgs.barrel))
@@ -60,18 +60,13 @@ function placeBarrels(){
 placeBarrels();
 addBarells(BarelLen);
 placeBarrels();
-export function barelPick(){
-  barels.forEach(function(item,i,arr){
-    if(hitTestRectangle(hero, item)) { 
-      item.roll()
-    }
-  })
-}
 
 function BarrelsRender(){
   barels.forEach(function(item, i, arr){
     container.addChild(barels[i])
   })
 }
+
 BarrelsRender();
+
 export default barels;
