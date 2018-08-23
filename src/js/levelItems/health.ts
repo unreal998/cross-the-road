@@ -1,6 +1,6 @@
 import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
-import container from "../level";
 import imgs from "../imgs";
+import container from "../container";
 
 class Health extends PIXI.Sprite{
   constructor(){
@@ -10,10 +10,9 @@ class Health extends PIXI.Sprite{
     this.y = 0;
   }
 }
-
 let k:object;
 const health:Array<Health>= [];
-export function generateHealth(lifes:number){
+function generateHealth(lifes:number){
   for(let i:number = 0; health.length <= lifes; i ++ ){
     k = new Health();
     health.push(k);
@@ -30,13 +29,8 @@ function placeHealth(){
   }
   )} 
 placeHealth();
-let i = 0;
-export function healthMinus(){
-    container.removeChild(health[i]);
-    i++;
-}
 
-function healthRender(){
+export function healthRender(){
   health.forEach(function(life,i,arr){
     container.addChild(life);
   });

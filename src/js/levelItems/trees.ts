@@ -1,6 +1,7 @@
 import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
-import container,{ grassLines }  from "../level";
+import lines from "../level";
 import imgs from '../imgs'
+import container from "../container";
 
 class Trees extends PIXI.Sprite{
   constructor(){
@@ -11,7 +12,7 @@ class Trees extends PIXI.Sprite{
   }
 }
 let trees:Array<Trees> = [];
-let treeslLen = grassLines.length;
+let treeslLen = lines.grassLines.length;
 let k = 0;
 let examp:Trees
 function addTrees(treesCount:number){
@@ -20,7 +21,7 @@ function addTrees(treesCount:number){
       k = 0
     }
     examp = new Trees()
-    examp.y = grassLines[k]-50;
+    examp.y = lines.grassLines[k]-50;
     trees.push(examp);
     k++
   };
@@ -34,7 +35,7 @@ function placeTrees(){
     if(p > treeslLen-1){
       p = 0
     }
-    let treesLine = grassLines[p]-50;
+    let treesLine = lines.grassLines[p]-50;
     trees[i].x
     trees[i].y = treesLine;
     trees[i].x += +((Math.random()*10).toFixed(0))*50;

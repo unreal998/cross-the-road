@@ -1,5 +1,5 @@
 import hero from "../hero";
-import container from "../level";
+import container from "../container";
 import youLoose from "../gameOverScreens/youLoose";
 import youWin from "../gameOverScreens/youWin";
 

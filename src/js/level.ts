@@ -1,7 +1,7 @@
 import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import imgs from "./imgs";
 import {levelSettings} from "./settings";
-const container = new PIXI.Container();
+import container from "./container";
 
 const grass = PIXI.Texture.fromImage(imgs.grass);
 const ocean = PIXI.Texture.fromImage(imgs.ocean);
@@ -34,9 +34,10 @@ for (var i = 0; i < 144; i++) {
 }
 let levelheight = 50;
 
-export let grassLines:Array<number> = [];
-export let asphaltLines:Array<number> = [];
-export let oceanLines:Array<number> = [];
+let grassLines:Array<number> = [];
+let asphaltLines:Array<number> = [];
+let oceanLines:Array<number> = [];
+
 
 export function grassMap(count:number){
   const grassMap = new Maps(grass,count);
@@ -59,6 +60,12 @@ export function oceanMap(count:number){
   }
 }
 
-levelSettings();
 
-export default container;
+const lines = {
+  grassLines: grassLines,
+  asphaltLines: asphaltLines,
+  oceanLines: oceanLines
+}
+
+export default lines
+levelSettings();

@@ -1,7 +1,7 @@
 import * as PIXI from "../../node_modules/pixi.js/dist/pixi";
 import imgs from "./imgs";
-import health, {healthMinus} from "./levelItems/health";
-import container from "./level";
+import health from "./levelItems/health";
+import container from "./container";
 import "./controller";
 
 class Hero extends PIXI.Sprite{
@@ -15,8 +15,15 @@ class Hero extends PIXI.Sprite{
   lifes = health.length;
   die(){
     this.y = 550;
+    this.healthMinus();
+  }
+  move(offsetX:number, offsetY:number){
+    hero.x += offsetX;
+    hero.y += offsetY;
+  }
+  healthMinus(){
     this.lifes --;
-    healthMinus();
+    container.removeChild(health[this.lifes]);
     if(this.lifes <= 0){
       this.lifes = 0
       this.y = 0;

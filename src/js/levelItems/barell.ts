@@ -1,7 +1,8 @@
 import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
-import container,{ oceanLines }  from "../level";
+import lines  from "../level";
 import imgs from "../imgs";
 import hero from "../hero";
+import container from "../container";
 
 class Barell extends PIXI.Sprite{
   constructor(){
@@ -9,7 +10,8 @@ class Barell extends PIXI.Sprite{
     this.anchor.set(0.5);
     this.x = 0;
     this.y = 0;
-    this.roll = () => {
+  }
+  roll = () => {
       hero.y +=5;
       this.y +=5;
       if(this.y>=550){
@@ -17,11 +19,10 @@ class Barell extends PIXI.Sprite{
           this.y = 600;
       }
     }
-  }
 }
 let barels:Array<Barell> = [];
 let k = 0;
-let BarelLen = oceanLines.length;
+let BarelLen = lines.oceanLines.length;
 let examp:Barell
 function addBarells(barelsCount:number){
   for (let i=0; barels.length < barelsCount; i++ ){
@@ -29,7 +30,7 @@ function addBarells(barelsCount:number){
       k = 0
     }
     examp = new Barell()
-    examp.y = oceanLines[k]-50;
+    examp.y = lines.oceanLines[k]-50;
     barels.push(examp);
     k++
   };
@@ -43,7 +44,7 @@ function placeBarrels(){
     if(p > BarelLen-1){
       p = 0
     }
-    let BarelLine = oceanLines[p]-50
+    let BarelLine = lines.oceanLines[p]-50
     barels[i].y = BarelLine;
     barels[i].x += +((Math.random()*10).toFixed(0))*50;
     barels[i].x > 510 || barels[i].x < 10 ? barels[i].x = 100 : false

@@ -1,6 +1,7 @@
 import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
-import container,{ asphaltLines } from "../level";
+import lines from "../level";
 import imgs from "../imgs";
+import container from "../container";
 
 class Enemy extends PIXI.Sprite{
   constructor(){
@@ -10,14 +11,17 @@ class Enemy extends PIXI.Sprite{
     this.y =0;
     this.speed = (Math.random()*10).toFixed(0);
   }
+
 }
+
 const enemys:Array<Enemy> = [];
-const monstersLen = asphaltLines.length;
+const monstersLen = lines.asphaltLines.length;
 let examp:Enemy
+
 function addMonsters(monsters:number){
   for (let i=0; enemys.length < monsters; i++ ){
     examp = new Enemy()
-    examp.y = asphaltLines[i]-50;
+    examp.y = lines.asphaltLines[i]-50;
     enemys.push(examp);
   };
 }
@@ -29,6 +33,7 @@ let positionLuck = 0;
 let i = 0;
 function placeMonsters(){ 
   for(i ; i <= enemys.length-1; i++ ){
+
     if(positionY >=550){
       positionY = 50;
     }
@@ -42,6 +47,7 @@ function placeMonsters(){
       enemys[i].startPoint = "left";
       enemys[i].scale.set(-0.7,0.7);
     }
+    
   }
 }
 placeMonsters();
@@ -60,7 +66,6 @@ export function monstersMove(delta:number){
 
 function MonstersRender(){
   enemys.forEach(function(item,i,arr){
-    
     container.addChild(enemys[i]);
   })
 }

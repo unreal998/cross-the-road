@@ -4,15 +4,15 @@ import trees from "../levelItems/trees";
 import enemys from '../levelItems/enemys';
 import hitTestRectangle from "../utils/hit";
 
-export function barelPick(){
+class Test {
+  barelPick(){
   barels.forEach(function(item,i,arr){
     if(hitTestRectangle(hero, item)) { 
       item.roll()
     }
   })
 }
-
-export function treeCheck(horizontal:boolean, val:number){
+treeCheck(horizontal:boolean, val:number){
   trees.forEach(function(item,i,arr){
     if(hitTestRectangle(hero, item)) { 
       if(horizontal === true){
@@ -24,11 +24,15 @@ export function treeCheck(horizontal:boolean, val:number){
     }
   });
 }
-
-export function monsterCheck(){
+monsterCheck(){
   enemys.forEach(function(item,i,arr){
     if(hitTestRectangle(hero, item)) { 
       hero.die();
     }
   })
 }
+
+}
+
+const tests = new Test()
+export default tests;
