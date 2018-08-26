@@ -1,7 +1,6 @@
 import * as PIXI from "../../../node_modules/pixi.js/dist/pixi";
 import imgs from "../imgs";
 import container from "../container";
-
 class Health extends PIXI.Sprite{
   constructor(){
     super(PIXI.Texture.fromImage(imgs.health))
