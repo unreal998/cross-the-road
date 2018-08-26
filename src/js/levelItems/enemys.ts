@@ -11,7 +11,17 @@ class Enemy extends PIXI.Sprite{
     this.y =0;
     this.speed = (Math.random()*10).toFixed(0);
   }
-
+  monstersMove(delta:number){
+    enemys.forEach(function(item,i,arr){
+      item.startPoint === "right" ? item.x-=((item.speed/4)+delta) : item.x+=(item.speed/4)+delta;
+      if(item.x > 550){
+        container.removeChild(item)
+      }
+      if(item.x < 0){
+        container.removeChild(item)
+      }
+    })
+  }
 }
 
 const enemys:Array<Enemy> = [];

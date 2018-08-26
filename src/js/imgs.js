@@ -17,6 +17,6 @@ const imgs = {
   barrel:barrel,
   ocean:ocean,
   asphalt:asphalt,
-  grass:grass
+  grass:grass,
 }
 export default imgs; 
